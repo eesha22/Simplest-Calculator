@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e1e2f;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    width: 320px;
+    padding: 20px;
+    background: #2b2b40;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#display {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 16px;
+    padding: 0 16px;
+    font-size: 2rem;
+    text-align: right;
+    color: #fff;
+    background: #1a1a28;
+    border: none;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.buttons br {
+    display: none;
+}
+
+.buttons button {
+    height: 60px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #3a3a55;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.buttons button:hover {
+    background: #4a4a6a;
+}
+
+.buttons button:active {
+    transform: scale(0.95);
+}
+
+/* Operators */
+.buttons button[onclick="appendToDisplay('/')"],
+.buttons button[onclick="appendToDisplay('*')"],
+.buttons button[onclick="appendToDisplay('-')"],
+.buttons button[onclick="appendToDisplay('+')"] {
+    background: #50507a;
+}
+
+/* CA and C: the first two buttons, top-left */
+.buttons button:nth-of-type(-n+2) {
+    background: #4a4a6a;
+}
+
+.buttons button:nth-of-type(-n+2):hover {
+    background: #4a4a6a;
+}
+
+/* calculate: top row, right after C, spanning 2 columns */
+.buttons button[onclick="calculate()"] {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    background: #4a4a6a;
+    font-size: 1rem;
+}
+
+.buttons button[onclick="calculate()"]:hover {
+    background: #3a3a55;
+}
+
+/* 0: double width on the bottom row */
+.buttons button[onclick="appendToDisplay('0')"] {
+    grid-column: span 2;
+}
