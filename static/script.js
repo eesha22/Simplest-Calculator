@@ -1,6 +1,10 @@
 function appendToDisplay(value){
     const display = document.getElementById('display');
+    if (display.value === '0' ){
+        display.value = value;
+    } else {
     display.value+= value;
+    }
 }
 
 function calculate(){
@@ -18,9 +22,9 @@ function calculate(){
 }
 
 function clearAll(){
-    document.getElementById('display').value ='';
+    document.getElementById('display').value ='0';
 }
 
 function oneBack(){
-    display.value = display.value.slice(0, -1) || (display.value = '');
+    display.value = display.value.slice(0, -1) || (display.value = '0');
 }
